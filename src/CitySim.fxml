@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller=".CitySimController">
+   <children>
+      <Text fx:id="cityName" layoutX="238.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of city" wrappingWidth="123.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="42.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of men:" />
+      <Text layoutX="42.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of women:" />
+      <Text layoutX="42.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of old men: " />
+      <Text layoutX="42.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of old women:" />
+      <Text layoutX="42.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of boys:" />
+      <Text layoutX="42.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of girls:" />
+      <Text fx:id="oldMenNumber" layoutX="182.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="oldWomenNumber" layoutX="182.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="menNumber" layoutX="182.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="womenNumber" layoutX="182.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="boysNumber" layoutX="182.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="girlsNumber" layoutX="182.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Button fx:id="buttonCreateCity" layoutX="42.0" layoutY="88.0" mnemonicParsing="false" text="Create city" />
+      <TextField fx:id="textfieldCityName" layoutX="42.0" layoutY="20.0" text="Name of new city" />
+      <TextField fx:id="textfieldPopulation" layoutX="42.0" layoutY="52.0" text="Initial population" />
+      <Text layoutX="300.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New men:" />
+      <Text layoutX="300.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New women:" />
+      <Text layoutX="300.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New old men: " />
+      <Text layoutX="300.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New old women:" />
+      <Text layoutX="300.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New boys:" />
+      <Text layoutX="300.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New girls:" />
+      <Text fx:id="oldMenNumberNew" layoutX="399.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="oldWomenNumberNew" layoutX="399.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="menNumberNew" layoutX="399.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="womenNumberNew" layoutX="399.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="boysNumberNew" layoutX="399.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="girlsNumberNew" layoutX="399.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text layoutX="444.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead men:" />
+      <Text layoutX="444.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead women:" />
+      <Text layoutX="444.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead old men: " />
+      <Text layoutX="444.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead old women:" />
+      <Text layoutX="444.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead boys:" />
+      <Text layoutX="444.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead girls:" />
+      <Text fx:id="oldMenNumberDead" layoutX="543.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="oldWomenNumberDead" layoutX="543.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="menNumberDead" layoutX="543.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="womenNumberDead" layoutX="543.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="boysNumberDead" layoutX="543.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="girlsNumberDead" layoutX="543.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+   </children>
+</AnchorPane>
