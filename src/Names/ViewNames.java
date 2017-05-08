@@ -6,8 +6,8 @@
 package Names;
 
 /**
- *
- * @author Jimmy
+ * 
+ * @author Kjetil
  */
 public class ViewNames {
     public static final String createView = "Create"; 

@@ -9,7 +9,9 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.stage.Stage;
 /**
- *
+ * This is the main class of the program, which declares the stage and stores the city name and
+ * initial population from they are entered in the first GUI screen. The class also instantiates a
+ * sceneselecter, allowing us to navigate through the GUI using the GUI elements (In our case, a button)
  * @author Jimmy
  */
 public class CitySim extends Application{
@@ -25,20 +27,7 @@ public class CitySim extends Application{
         SceneSelecter ss = new SceneSelecter();
         ss.start(stage);
     }
-    
-    //static City city = new City("Kristiansand", 10000);
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String[] args) {
-        // TODO code application logic here
-        
-        city.initialCitySize();
-        city.passTime(365);
-        System.out.println("People after 365 days:");
-        city.getCityInfo();
-    }
-    */
+   
     
     public static void main(String[] args) {
         
@@ -46,10 +35,11 @@ public class CitySim extends Application{
         
     }
     
-    
+    //This method sets the initial population  value and the city name
     public static void setInitValues(String name, String pop){
         CitySim.name = name;
         initPop = Integer.parseInt(pop);
+        
     }
     public static int getPop(){
         return initPop;

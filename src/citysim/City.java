@@ -16,7 +16,7 @@ package citysim;
  */
 public class City {
 
-    
+
 private String cityName;
 private double totalPopulation;
 private double percentElders;
@@ -43,15 +43,15 @@ private double doubleNumberGirls;
         
 //Various variables set to default values
 private double elderMortality = 0.2;
-private double adultMortality = 0.05;
-private double childMortality = 0.1;
+private double adultMortality = 0.025;
+private double childMortality = 0.05;
 
-private double adultsAging = 0.1;
+private double adultsAging = 0.15;
 private double childrenAging = 0.3;
-private double birthRate = 0.4;
+private double birthRate = 0.45;
 
-private double percentFemale = 0.505;
-private double percentMale = 0.495;
+private double percentFemale = 0.503;
+private double percentMale = 0.497;
 
 private double percentWealthy = 0.03;
 private double percentMiddleClass = 0.27;
@@ -72,24 +72,27 @@ private double newWomen;
 private double newBoys;
 private double newGirls;
 
-//Constructor takes 2 parameters and sets some default values
-public City(String cityName, double totalPop)
+private int totalDeath;
+private int totalGrowth;
+
+//Constructor simply sets some default values. 
+public City()
 {
-    this.cityName = cityName;
     percentAdults = 0.5;
     percentChildren = 0.3;
-    percentElders = 0.2;    
-    totalPopulation = totalPop;
+    percentElders = 0.2;
+    
+    
     }
 
 /*The central method of the class. Takes a parameter of number of days (how much time to pass),
 * sets all tracker variables to 0 (since we only want to track the values of a single time period),
 * then runs a loop to increase the values of the various demographics based on their growth and death rates,
 * and the loop runs once per day. Then the method assigns new values to the tracking variables
-* and finally assign the new values from the double variables to the int variables
+* and finally assign the new values from the double variables to the int variables.
+* We still store all the values as doubles so as not to lose any decimals, but displayed values are int.
 */
 public void passTime(int numberOfDays){
-    
     deadOldMen = 0;
     deadOldWomen = 0;
     deadMen = 0;
@@ -103,6 +106,8 @@ public void passTime(int numberOfDays){
     newBoys = 0;
     newGirls = 0;
     
+    //The loop multiplies the current population with the mortality rate and aging/birth rate, then divides by number of days per year to get daily growth.
+    //
     for (int i = numberOfDays; i > 0; i--){
         
     double oldMenDeath = ((doubleNumberOldMen * elderMortality) / daysPerYear);
@@ -126,21 +131,22 @@ public void passTime(int numberOfDays){
     doubleNumberGirls = (doubleNumberGirls + girlsBorn - girlsDeath - girlsAging); 
     
     
-    deadOldMen = oldMenDeath;
-    deadOldWomen = oldWomenDeath;
-    deadMen = menDeath;
-    deadWomen = womenDeath;
-    deadBoys = boysDeath;
-    deadGirls = girlsDeath;
-    newOldMen = menAging;
-    newOldWomen = womenAging;
-    newMen = boysAging;
-    newWomen = girlsAging;
-    newBoys = boysBorn;
-    newGirls = girlsBorn;
+    deadOldMen = deadOldMen + oldMenDeath;
+    deadOldWomen = deadOldWomen + oldWomenDeath;
+    deadMen = deadMen + menDeath;
+    deadWomen = deadWomen + womenDeath;
+    deadBoys = deadBoys + boysDeath;
+    deadGirls = deadGirls + girlsDeath;
+    newOldMen = newOldMen + menAging;
+    newOldWomen = newOldWomen + womenAging;
+    newMen = newMen + boysAging;
+    newWomen = newWomen + girlsAging;
+    newBoys = newBoys + boysBorn;
+    newGirls = newGirls + girlsBorn;
+    
     
     }
-    
+    //Sets the display variables (int) with the values from double variable
     numberOldMen = (int)doubleNumberOldMen;
     numberOldWomen = (int)doubleNumberOldWomen;
     numberMen = (int)doubleNumberMen;
@@ -149,29 +155,8 @@ public void passTime(int numberOfDays){
     numberGirls = (int)doubleNumberGirls;
     
     totalPopulation = (doubleNumberOldMen + doubleNumberOldWomen + doubleNumberMen + doubleNumberWomen + doubleNumberBoys + doubleNumberGirls);
-    /*double populationGrowth;        
-    populationGrowth = ((totalPopulation * populationGrowthRate) / 365) * numberOfDays;
-    totalPopulation = totalPopulation + populationGrowth;
-    System.out.println("Population after "+ numberOfDays +" days:");
-    getCityInfo();*/
-    /*System.out.println("boysBorn " + boysBorn);
-    System.out.println("girlsBorn  "+ girlsBorn);
-    System.out.println("menAging  "+ menAging);
-    System.out.println("womenAging  "+ womenAging);
-    System.out.println("boysAging  "+ boysAging);
-    System.out.println("girlsAging  "+ girlsAging);
-    System.out.println("");
-    System.out.println("");
-    System.out.println("oldMenDeath  "+ oldMenDeath);
-    System.out.println("oldWomenDeath  "+ oldWomenDeath);
-    System.out.println("womenDeath  " + womenDeath);
-    System.out.println("menDeath  " + menDeath);
-    System.out.println("boysDeath  " + boysDeath);
-    System.out.println("girlsDeath  " + girlsDeath);
-    System.out.println("");
-    System.out.println("");*/
-    
-    
+    totalDeath = (int)deadOldMen + (int)deadOldWomen + (int)deadMen + (int)deadWomen + (int)deadBoys + (int)deadGirls;
+    totalGrowth = (int)newBoys + (int)newGirls;
     
 }
 
@@ -193,30 +178,9 @@ numberBoys = (int)doubleNumberBoys;
 numberGirls = (int)doubleNumberGirls;
 totalPopulation = (numberOldMen + numberOldWomen + numberMen + numberWomen + numberBoys + numberGirls);
 
-System.out.println("Initial number of old men: " + numberOldMen);
-System.out.println("Initial number of old women: " + numberOldWomen);
-System.out.println("Initial number of men: " + numberMen);
-System.out.println("Initial number of women: " + numberWomen);
-System.out.println("Initial number of boys: " + numberBoys);
-System.out.println("Initial number of girls: " + numberGirls);
-System.out.println("Initial total population: " + totalPopulation);
 
 }
-   //This method prints the various demographic values
-public void getCityInfo()
-{
-    System.out.println("Old Men: " + numberOldMen);
-    System.out.println("Old women: " + numberOldWomen);
-    System.out.println("Men: " + numberMen);
-    System.out.println("Women: " + numberWomen);
-    System.out.println("Boys: " + numberBoys);
-    System.out.println("Girls: " + numberGirls);
-    System.out.println("Total number of people: " + totalPopulation);
-    /*System.out.println("Wealthy people: " + (int)(totalPopulation * percentWealthy));
-    System.out.println("Middle class people: " + (int)(totalPopulation * percentMiddleClass));
-    System.out.println("Poor people: " + (int)(totalPopulation * percentPoor));*/
-    
-}
+
 //With this method we can adjust the mortality rates
 public void setMortality(double adult, double elder, double child){
     elderMortality = elder;
@@ -239,8 +203,103 @@ public void setWealthPercentages(double wealthy, double middle, double poor)
     percentMiddleClass = middle;
     percentPoor = poor;
 }
+
+//Getters and setters for initial population and city name
 public String getCityName(){
     return cityName;
 }
+public void setCityName(String name){
+    cityName = name;
+}
+
+public int getPop(){
+    return (int)totalPopulation;
+}
+public void setPop(double pop){
+    totalPopulation = pop;
+    
+}
+    //Getters for the population variables
+    public int getNumberOldMen() {
+        return numberOldMen;
+    }
+
+    public int getNumberOldWomen() {
+        return numberOldWomen;
+    }
+
+    public int getNumberMen() {
+        return numberMen;
+    }
+
+    public int getNumberWomen() {
+        return numberWomen;
+    }
+
+    public int getNumberBoys() {
+        return numberBoys;
+    }
+
+    public int getNumberGirls() {
+        return numberGirls;
+    }
+
+    public int getDeadOldMen() {
+        return (int)deadOldMen;
+    }
+
+    public int getDeadOldWomen() {
+        return (int)deadOldWomen;
+    }
+
+    public int getDeadMen() {
+        return (int)deadMen;
+    }
+
+    public int getDeadWomen() {
+        return (int)deadWomen;
+    }
+
+    public int getDeadBoys() {
+        return (int)deadBoys;
+    }
+
+    public int getDeadGirls() {
+        return (int)deadGirls;
+    }
+
+    public int getNewOldMen() {
+        return (int)newOldMen;
+    }
+
+    public int getNewOldWomen() {
+        return (int)newOldWomen;
+    }
+
+    public int getNewMen() {
+        return (int)newMen;
+    }
+
+    public int getNewWomen() {
+        return (int)newWomen;
+    }
+
+    public int getNewBoys() {
+        return (int)newBoys;
+    }
+
+    public int getNewGirls() {
+        return (int)newGirls;
+    }
+
+    public int getTotalDeath() {
+        return totalDeath;
+    }
+
+    public int getTotalGrowth() {
+        return totalGrowth;
+    }
+
+
 
 }
